@@ -28,6 +28,8 @@ public class GameArea extends JPanel {
                 if (block[row][col] == 1) {
                     g.setColor(Color.red);
                     g.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+                    g.setColor(Color.black);
+                    g.drawRect(col * cellSize, row * cellSize, cellSize, cellSize);
                 }
             }
         }
@@ -38,11 +40,6 @@ public class GameArea extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (int y = 0; y < rows; y++) {
-            for (int x = 0; x < columns; x++) {
-                g.drawRect(x * cellSize, y * cellSize, cellSize, cellSize);
-            }
-        }
         drawBlock(g);
 
     }
