@@ -5,28 +5,45 @@ import java.awt.*;
 
 public class GameArea extends JPanel {
 
+    public static final int GAMEWIDTH = 200;
+    public static final int GAMEHEIGHT = 300;
     private final int rows;
     private final int columns;
-    private int cellSize;
+    private final int cellSize;
+    private int[][] block = {{1, 0}, {1, 0}, {1, 1}};
 
     public GameArea(int columns) {
-        this.setBounds(0, 0, 200, 200); // width should be divisible by no of columns and height should be divisible by cellSize
+        this.setBounds(0, 0, GAMEWIDTH, GAMEHEIGHT); // width should be divisible by no of columns and height should be divisible by cellSize
         this.setBorder(BorderFactory.createLineBorder(Color.black));
         this.setBackground(Color.lightGray);
 
-
         this.columns = columns;
-        cellSize = this.getBounds().height / columns;
+        cellSize = this.getBounds().width / columns;
         this.rows = this.getBounds().height / cellSize;
     }
+
+    private void drawBlock(Graphics g) {
+        for (int row = 0; row < block.length; row++) {
+            for (int col = 0; col < block[0].length; col++) {
+                if (block[row][col] == 1) {
+                    g.setColor(Color.red);
+                    g.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+                }
+            }
+        }
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(int x = 0; x < cellSize; x++) {
-            g.drawRect(x * cellSize, 0, cellSize, cellSize);
+        for (int y = 0; y < rows; y++) {
+            for (int x = 0; x < columns; x++) {
+                g.drawRect(x * cellSize, y * cellSize, cellSize, cellSize);
+            }
         }
-    }
+        drawBlock(g);
 
+    }
 }

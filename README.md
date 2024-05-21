@@ -10,7 +10,7 @@ tetris.Tetris game
    - call `super.paintComponent(g)` in paintComponent to see visible background color.
    - the paintComponent method is not called but some other system calls it
    - Create and draw tetris grid with number of rows and columns
-   - Adjust JPanel to match grid specification
+   - Adjust JPanel to match grid specification with centre and vertical alignment
    - Create a tetris block using 2-D array (1 = colored, 0 = blank)
    - drawBlock method to draw this tetris block on the grid
 

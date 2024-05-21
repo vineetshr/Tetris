@@ -1,15 +1,18 @@
 package tetris;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GameForm extends JFrame {
 
+    private GameArea gameArea;
 
-    private GameArea ga;
     public GameForm() {
-        ga = new GameArea(10);
-        this.add(ga);
+        gameArea = new GameArea(10);
+        this.add(gameArea);
 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500,500);
     }
 
     public static void main(String[] args) {
