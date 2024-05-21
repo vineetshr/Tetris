@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="tetris.GameForm">
+  <grid id="27dc6" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="92" y="44" width="369" height="322"/>
+    </constraints>
+    <properties>
+      <background color="-5396452"/>
+    </properties>
+    <border type="line"/>
+    <children/>
+  </grid>
+</form>

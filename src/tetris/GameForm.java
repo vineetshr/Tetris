@@ -1,14 +1,18 @@
-import javax.swing.JFrame;
+package tetris;
+
+import javax.swing.*;
 
 public class GameForm extends JFrame {
-    public GameForm()  {
 
-        this.add(new GameArea());
+
+    private GameArea ga;
+    public GameForm() {
+        ga = new GameArea(10);
+        this.add(ga);
 
     }
 
     public static void main(String[] args) {
-
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
