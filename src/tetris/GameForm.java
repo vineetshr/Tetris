@@ -1,7 +1,6 @@
 package tetris;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GameForm extends JFrame {
 
@@ -24,6 +23,5 @@ public class GameForm extends JFrame {
 
             }
         });
-
     }
 }
