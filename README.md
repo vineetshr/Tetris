@@ -1,5 +1,5 @@
-# tetris.Tetris
-tetris.Tetris game
+# Tetris
+Tetris game
 
 ### Steps
 
