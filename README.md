@@ -32,7 +32,8 @@ Tetris game
 
 
 3. **Spawn new blocks**
-   - Background = already fallen blocks
+   - call spawnBlock() in GameThread instead of GameArea
+   - Background = already fallen blocks. Represent using `Color [][]`
    - Foreground = falling blocks
 
 
