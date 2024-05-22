@@ -12,6 +12,12 @@ public class GameForm extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
+
+        startGame();
+    }
+
+    public void startGame() {
+        new GameThread(gameArea).start();
     }
 
     public static void main(String[] args) {

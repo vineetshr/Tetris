@@ -6,10 +6,14 @@ public class TetrisBlock {
 
     private int[][] shape;
     private Color color;
+    private int x, y;
 
     public TetrisBlock(int[][] shape, Color color) {
         this.shape = shape;
         this.color = color;
+
+        x = 3;
+        y = 2;
     }
 
     public int[][] getShape() {
@@ -28,4 +32,23 @@ public class TetrisBlock {
         return shape[0].length;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void moveDown() {
+        y++;
+    }
+
+    public void moveLeft() {
+        x--;
+    }
+
+    public void moveRight() {
+        x++;
+    }
 }

@@ -35,10 +35,14 @@ public class GameArea extends JPanel {
         for (int row = 0; row < h; row++) {
             for (int col = 0; col < w; col++) {
                 if (shape[row][col] == 1) {
+
+                    int x = (block.getX() + col) * cellSize;
+                    int y = (block.getY() + row) * cellSize;
+
                     g.setColor(c);
-                    g.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+                    g.fillRect(x, y, cellSize, cellSize);
                     g.setColor(Color.black);
-                    g.drawRect(col * cellSize, row * cellSize, cellSize, cellSize);
+                    g.drawRect(x, y, cellSize, cellSize);
                 }
             }
         }
@@ -46,6 +50,11 @@ public class GameArea extends JPanel {
 
     public void spawnBlock() {
         block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
+    }
+
+    public void moveBlockDown() {
+        block.moveDown();
+        repaint();
     }
 
     @Override
