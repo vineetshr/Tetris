@@ -50,11 +50,20 @@ public class GameArea extends JPanel {
 
     public void spawnBlock() {
         block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
+        block.spawn(columns);
     }
 
     public void moveBlockDown() {
+        if (!checkBottom()) return;
         block.moveDown();
         repaint();
+    }
+
+    private boolean checkBottom() {
+        if (block.getBottomEdge() == rows) {
+            return false;
+        }
+        return true;
     }
 
     @Override
