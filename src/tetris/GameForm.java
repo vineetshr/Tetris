@@ -14,8 +14,9 @@ public class GameForm extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
 
-        startGame();
         initControls();
+        startGame();
+
     }
 
     private void initControls() {
@@ -30,29 +31,25 @@ public class GameForm extends JFrame {
         am.put("right", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("right");
-
+                gameArea.moveBlockRight();
             }
         });
         am.put("left", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("left");
-
+                gameArea.moveBlockLeft();
             }
         });
         am.put("up", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("up");
-
+                gameArea.rotateBlock();
             }
         });
         am.put("down", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("down");
-
+                gameArea.dropBlock();
             }
         });
     }

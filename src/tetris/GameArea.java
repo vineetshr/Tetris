@@ -105,6 +105,28 @@ public class GameArea extends JPanel {
         return true;
     }
 
+    public void moveBlockRight() {
+        block.moveRight();
+        repaint();
+    }
+
+    public void moveBlockLeft() {
+        block.moveLeft();
+        repaint();
+    }
+
+    public void dropBlock() {
+        while (checkBottom()) {
+            block.moveDown();
+        }
+        repaint();
+    }
+
+    public void rotateBlock() {
+        block.rotate();
+        repaint();
+    }
+
     private boolean checkBottom() {
         if (block.getBottomEdge() == rows) {
             return false;
