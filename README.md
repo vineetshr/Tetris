@@ -13,6 +13,7 @@ Tetris game
    - Adjust JPanel to match grid specification with centre and vertical alignment
    - Create a tetris block using 2-D array (1 = colored, 0 = blank)
    - drawBlock method to draw this tetris block on the grid
+   
 
 2. **Make the block fall down**
    - Create a TetrisBlock class, has 2-D array determining shape and variable for its color
@@ -30,7 +31,6 @@ Tetris game
    - Fix the block so it stops moving after touching the bottom
 
 
-
 3. **Spawn new blocks**
    - call spawnBlock() in GameThread instead of GameArea
    - Background = already fallen blocks. Represent using `Color [][]`
@@ -38,6 +38,16 @@ Tetris game
 
 
 4. **Moving and rotating block on key press**
+   - Use input map and action map for Java key bindings to add keyboard controls to have our program move and rotate the falling block
+   - To get the maps, call the respective methods on the `getRootPane().getInputMap()` for input map for example
+   - To add keystrokes to the inputMap, use the put method on the inputMap object
+   - To add an action to the actionMap, use the put method on the actionMap object
+   - An action in Java can be represented by an instance of the `AbstractAction()` class, but `AbstractAction()` is an abstract class so cannot be instantiated
+   - But we can create a new class which extends `AbstractAction()` and pass the object reference to the `put()` method
+   - But we cannot have 1 class represent 4 different actions, solution: create 4 separate subclasses. Not the best method 
+   - Better method: use anonymous classes, where the action is represented by an object of an anonymous subclass of the `AbstractAction()` class
+   - 
+   - 
 
 
 5. **Clear complete lines**

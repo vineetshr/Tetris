@@ -1,6 +1,7 @@
 package tetris;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 public class GameForm extends JFrame {
 
@@ -14,6 +15,46 @@ public class GameForm extends JFrame {
         setSize(500,500);
 
         startGame();
+        initControls();
+    }
+
+    private void initControls() {
+        InputMap im = this.getRootPane().getInputMap();
+        ActionMap am = this.getRootPane().getActionMap();
+
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        im.put(KeyStroke.getKeyStroke("UP"), "up");
+        im.put(KeyStroke.getKeyStroke("DOWN"), "down");
+
+        am.put("right", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("right");
+
+            }
+        });
+        am.put("left", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("left");
+
+            }
+        });
+        am.put("up", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("up");
+
+            }
+        });
+        am.put("down", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("down");
+
+            }
+        });
     }
 
     public void startGame() {
