@@ -21,6 +21,14 @@ public class GameThread extends Thread {
                     throw new RuntimeException(e);
                 }
             }
+
+            if (gameArea.isOutOfBounds()) {
+                System.out.println("Game Over");
+                break;
+            }
+
+            gameArea.moveBlockToBackground();
+            gameArea.clearLines();
         }
     }
 }

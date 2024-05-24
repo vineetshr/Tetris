@@ -65,7 +65,7 @@ public class GameArea extends JPanel {
         }
     }
 
-    private void moveBlockToBackground() {
+    public void moveBlockToBackground() {
         int h = block.getHeight();
         int w = block.getWidth();
         Color color = block.getColor();
@@ -80,6 +80,14 @@ public class GameArea extends JPanel {
                 }
             }
         }
+    }
+
+    public boolean isOutOfBounds() {
+        if (block.getY() < 0) {
+            block = null;
+            return true;
+        }
+        return false;
     }
 
     public void clearLines() {
@@ -98,7 +106,7 @@ public class GameArea extends JPanel {
                 clearLine(r);
                 shiftDown(r);
                 clearLine(0); //for the 0th row, since shiftDown deals with rows > 1
-                r++; // so it rechecks the line for a complete block again before checking the rows above 
+                r++; // so it rechecks the line for a complete block again before checking the rows above
 
                 repaint();
             }
@@ -133,8 +141,6 @@ public class GameArea extends JPanel {
 
     public boolean moveBlockDown() {
         if (!checkBottom()) {
-            moveBlockToBackground();
-            clearLines();
             return false;
         }
 
@@ -144,18 +150,21 @@ public class GameArea extends JPanel {
     }
 
     public void moveBlockRight() {
+        if (block == null) return;
         if (!checkRight()) return;
         block.moveRight();
         repaint();
     }
 
     public void moveBlockLeft() {
+        if (block == null) return;
         if (!checkLeft()) return;
         block.moveLeft();
         repaint();
     }
 
     public void dropBlock() {
+        if (block == null) return;
         while (checkBottom()) {
             block.moveDown();
         }
@@ -163,6 +172,7 @@ public class GameArea extends JPanel {
     }
 
     public void rotateBlock() {
+        if (block == null) return;
         block.rotate();
         repaint();
     }
