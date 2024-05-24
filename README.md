@@ -46,10 +46,8 @@ Tetris game
    - But we can create a new class which extends `AbstractAction()` and pass the object reference to the `put()` method
    - But we cannot have 1 class represent 4 different actions, solution: create 4 separate subclasses. Not the best method 
    - Better method: use anonymous classes, where the action is represented by an object of an anonymous subclass of the `AbstractAction()` class
-   - 
-   - 
 
-
+   
 5. **Clear complete lines**
 
 6. **Adding more block types**

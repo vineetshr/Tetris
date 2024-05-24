@@ -157,6 +157,23 @@ public class GameArea extends JPanel {
         if (block.getLeftEdge() == 0) {
             return false;
         }
+
+        int[][] shape = block.getShape();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int row = 0; row < h; row++) {
+            for (int col = 0; col < w; col++) {
+                if (shape[row][col] != 0) {
+                    int x = col + block.getX() - 1;
+                    int y = row + block.getY();
+                    if (y < 0) break; // for ArrayIndexOutOfBoundsException when block is above game area
+                    if (background[y][x] != null) return false;
+                    break;
+                }
+            }
+        }
+
         return true;
     }
 
@@ -164,6 +181,23 @@ public class GameArea extends JPanel {
         if (block.getRightEdge() == columns) {
             return false;
         }
+
+        int[][] shape = block.getShape();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int row = 0; row < h; row++) {
+            for (int col = w - 1; col >= 0; col--) {
+                if (shape[row][col] != 0) {
+                    int x = col + block.getX() + 1;
+                    int y = row + block.getY();
+                    if (y < 0) break; // for ArrayIndexOutOfBoundsException when block is above game area
+                    if (background[y][x] != null) return false;
+                    break;
+                }
+            }
+        }
+
         return true;
     }
 
