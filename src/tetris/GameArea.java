@@ -82,6 +82,43 @@ public class GameArea extends JPanel {
         }
     }
 
+    public void clearLines() {
+        boolean lineFilled;
+
+        for (int r = rows - 1; r >= 0; r--) {
+            lineFilled = true;
+            for (int c = 0; c < columns; c++) {
+                if (background[r][c] == null) {
+                    lineFilled = false;
+                    break;
+                }
+            }
+
+            if (lineFilled) {
+                clearLine(r);
+                shiftDown(r);
+                clearLine(0); //for the 0th row, since shiftDown deals with rows > 1
+                r++; // so it rechecks the line for a complete block again before checking the rows above 
+
+                repaint();
+            }
+        }
+    }
+
+    private void clearLine(int r) {
+        for (int i = 0; i < columns; i++) {
+            background[r][i] = null;
+        }
+    }
+
+    private void shiftDown(int r) {
+        for (int row = r; row > 0; row--) {
+            for (int col = 0; col < columns; col++) {
+                background[row][col] = background[row - 1][col];
+            }
+        }
+    }
+
     private void drawGridSquare(Graphics g, Color color, int x, int y) {
         g.setColor(color);
         g.fillRect(x, y, cellSize, cellSize);
@@ -97,6 +134,7 @@ public class GameArea extends JPanel {
     public boolean moveBlockDown() {
         if (!checkBottom()) {
             moveBlockToBackground();
+            clearLines();
             return false;
         }
 
