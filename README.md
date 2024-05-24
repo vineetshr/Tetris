@@ -50,6 +50,7 @@ Tetris game
    
 5. **Clear complete lines**
 
+
 6. **Adding more block types**
 
 
