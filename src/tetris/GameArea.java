@@ -106,11 +106,13 @@ public class GameArea extends JPanel {
     }
 
     public void moveBlockRight() {
+        if (!checkRight()) return;
         block.moveRight();
         repaint();
     }
 
     public void moveBlockLeft() {
+        if (!checkLeft()) return;
         block.moveLeft();
         repaint();
     }
@@ -129,6 +131,37 @@ public class GameArea extends JPanel {
 
     private boolean checkBottom() {
         if (block.getBottomEdge() == rows) {
+            return false;
+        }
+
+        int[][] shape = block.getShape();
+        int w = block.getWidth();
+        int h = block.getHeight();
+
+        for (int col = 0; col < w; col++) {
+            for (int row = h - 1; row >= 0; row--) {
+                if (shape[row][col] != 0) {
+                    int x = col + block.getX();
+                    int y = row + block.getY() + 1;
+                    if (y < 0) break; // for ArrayIndexOutOfBoundsException when block is above game area
+                    if (background[y][x] != null) return false;
+                    break;
+                }
+             }
+        }
+
+        return true;
+    }
+
+    private boolean checkLeft() {
+        if (block.getLeftEdge() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkRight() {
+        if (block.getRightEdge() == columns) {
             return false;
         }
         return true;

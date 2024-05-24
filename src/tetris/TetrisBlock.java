@@ -89,4 +89,12 @@ public class TetrisBlock {
     public int getBottomEdge() {
         return y + getHeight();
     }
+
+    public int getLeftEdge() {
+        return x;
+    } // having 2 methods return the same value improves code readability
+
+    public int getRightEdge() {
+        return x + getWidth();
+    }
 }
