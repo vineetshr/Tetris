@@ -1,5 +1,7 @@
 package tetris;
 
+import tetrisblocks.IShape;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -139,7 +141,8 @@ public class GameArea extends JPanel {
     }
 
     public void spawnBlock() {
-        block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}}, Color.blue);
+        block = new IShape();
+        // block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}});
         block.spawn(columns);
     }
 
