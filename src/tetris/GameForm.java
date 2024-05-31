@@ -18,7 +18,7 @@ public class GameForm extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
 
-        scoreLabel = new JLabel("            Score:        ");
+        scoreLabel = new JLabel("Score: ");
         levelLabel = new JLabel("Level: 1");
         Font labelFont = new Font("Arial", Font.PLAIN, 18);
         scoreLabel.setFont(labelFont);

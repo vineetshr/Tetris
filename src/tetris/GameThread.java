@@ -44,7 +44,6 @@ public class GameThread extends Thread {
                 gameForm.updateLevel(level);
                 pause -= speedPerLevel;
             }
-
         }
     }
 }

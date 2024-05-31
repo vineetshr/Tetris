@@ -1,6 +1,7 @@
 package tetris;
 
 import java.awt.*;
+import java.util.Random;
 
 public class TetrisBlock {
 
@@ -36,12 +37,13 @@ public class TetrisBlock {
     }
 
     public void spawn(int gridWidth) {
-
+        Random r = new Random();
+        
         currentRotation = 0;
         shape = shapes[currentRotation]; // init before y and x coordinates, as it depends on the tetris block
 
         y = -getHeight(); // block appears above the game area
-        x = (gridWidth - getWidth())/2; // block appears in the middle of the game area
+        x = r.nextInt(gridWidth - getWidth());
     }
 
     public int[][] getShape() {
