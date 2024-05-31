@@ -3,9 +3,12 @@ package tetris;
 public class GameThread extends Thread {
 
     private GameArea gameArea;
+    private int score;
+    private GameForm gameForm;
 
-    public GameThread(GameArea ga) {
-        this.gameArea = ga;
+    public GameThread(GameArea gameArea, GameForm gameForm) {
+        this.gameArea = gameArea;
+        this.gameForm = gameForm;
     }
 
     @Override
@@ -28,7 +31,8 @@ public class GameThread extends Thread {
             }
 
             gameArea.moveBlockToBackground();
-            gameArea.clearLines();
+            score += gameArea.clearLines();
+            gameForm.updateScore(score);
         }
     }
 }

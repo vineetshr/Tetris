@@ -1,11 +1,15 @@
 package tetris;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class GameForm extends JFrame {
 
     private GameArea gameArea;
+    private JPanel panel1;
+    private JLabel scoreLabel;
+    private JLabel levelLabel;
 
     public GameForm() {
         gameArea = new GameArea(10);
@@ -13,6 +17,14 @@ public class GameForm extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
+
+        scoreLabel = new JLabel("            Score:        ");
+        levelLabel = new JLabel("Level: 1");
+        Font labelFont = new Font("Arial", Font.PLAIN, 18);
+        scoreLabel.setFont(labelFont);
+        levelLabel.setFont(labelFont);
+        gameArea.add(scoreLabel);
+        gameArea.add(levelLabel);
 
         initControls();
         startGame();
@@ -55,7 +67,15 @@ public class GameForm extends JFrame {
     }
 
     public void startGame() {
-        new GameThread(gameArea).start();
+        new GameThread(gameArea, this).start();
+    }
+
+    public void updateScore(int score) {
+        scoreLabel.setText("Score: "  + score);
+    }
+
+    public void updateLevel(int level) {
+        levelLabel.setText("Level: " + level);
     }
 
     public static void main(String[] args) {

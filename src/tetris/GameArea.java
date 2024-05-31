@@ -90,8 +90,9 @@ public class GameArea extends JPanel {
         return false;
     }
 
-    public void clearLines() {
+    public int clearLines() {
         boolean lineFilled;
+        int linesCleared = 0; // counts the number of lines cleared to update the score
 
         for (int r = rows - 1; r >= 0; r--) {
             lineFilled = true;
@@ -103,6 +104,7 @@ public class GameArea extends JPanel {
             }
 
             if (lineFilled) {
+                linesCleared++; // update the score
                 clearLine(r);
                 shiftDown(r);
                 clearLine(0); //for the 0th row, since shiftDown deals with rows > 1
@@ -111,6 +113,8 @@ public class GameArea extends JPanel {
                 repaint();
             }
         }
+
+        return linesCleared;
     }
 
     private void clearLine(int r) {
