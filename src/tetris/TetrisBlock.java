@@ -10,6 +10,7 @@ public class TetrisBlock {
     private int x, y;
     private int[][][] shapes;
     private int currentRotation;
+    private Color[] availableColors = {Color.green, Color.red, Color.blue};
 
     public TetrisBlock(int[][] shape, Color color) {
         this.shape = shape;
@@ -38,12 +39,14 @@ public class TetrisBlock {
 
     public void spawn(int gridWidth) {
         Random r = new Random();
-        
-        currentRotation = 0;
+
+        currentRotation = r.nextInt(shape.length);
         shape = shapes[currentRotation]; // init before y and x coordinates, as it depends on the tetris block
 
         y = -getHeight(); // block appears above the game area
-        x = r.nextInt(gridWidth - getWidth());
+        x = r.nextInt(gridWidth - getWidth()); // block spawns randomly
+
+        color = availableColors[r.nextInt(availableColors.length)];
     }
 
     public int[][] getShape() {
