@@ -1,9 +1,10 @@
 package tetris;
 
-import tetrisblocks.IShape;
+import tetrisblocks.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class GameArea extends JPanel {
 
@@ -13,6 +14,7 @@ public class GameArea extends JPanel {
     private final int columns;
     private final int cellSize;
     private TetrisBlock block;
+    private TetrisBlock[] blocks;
     private Color[][] background;
 
     public GameArea(int columns) {
@@ -26,6 +28,8 @@ public class GameArea extends JPanel {
         this.rows = this.getBounds().height / cellSize;
 
         background = new Color[rows][columns];
+
+        blocks = new TetrisBlock[]{new IShape(), new JShape(), new LShape(), new OShape(), new SShape(), new TShape(), new ZShape()};
     }
 
     private void drawBlock(Graphics g) {
@@ -141,8 +145,8 @@ public class GameArea extends JPanel {
     }
 
     public void spawnBlock() {
-        block = new IShape();
-        // block = new TetrisBlock(new int[][]{{1, 0}, {1, 0}, {1, 1}});
+        Random r = new Random();
+        block = blocks[r.nextInt(blocks.length)];
         block.spawn(columns);
     }
 

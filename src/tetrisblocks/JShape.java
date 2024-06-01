@@ -4,7 +4,7 @@ import tetris.TetrisBlock;
 
 public class JShape extends TetrisBlock {
 
-    public JShape(int[][] shape) {
-        super(shape);
+    public JShape() {
+        super(new int[][]{{0, 1}, {0, 1}, {1, 1}});
     }
 }
