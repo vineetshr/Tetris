@@ -185,6 +185,11 @@ public class GameArea extends JPanel {
     public void rotateBlock() {
         if (block == null) return;
         block.rotate();
+
+        if (block.getLeftEdge() < 0) block.setX(0);
+        if (block.getRightEdge() >= columns) block.setX(columns - block.getWidth());
+        if (block.getBottomEdge() >= rows) block.setY(rows - block.getHeight());
+
         repaint();
     }
 
@@ -232,7 +237,6 @@ public class GameArea extends JPanel {
                 }
             }
         }
-
         return true;
     }
 
@@ -256,7 +260,6 @@ public class GameArea extends JPanel {
                 }
             }
         }
-
         return true;
     }
 

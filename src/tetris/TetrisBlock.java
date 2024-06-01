@@ -68,8 +68,16 @@ public class TetrisBlock {
         return x;
     }
 
+    public void setX(int newX) {
+        x = newX;
+    }
+
     public int getY() {
         return y;
+    }
+
+    public void setY(int newY) {
+        y = newY;
     }
 
     public void moveDown() {
@@ -95,8 +103,8 @@ public class TetrisBlock {
     }
 
     public int getLeftEdge() {
-        return x;
-    } // having 2 methods return the same value improves code readability
+        return x; // having 2 methods return the same value improves code readability
+    }
 
     public int getRightEdge() {
         return x + getWidth();
